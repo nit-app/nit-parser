@@ -1,8 +1,6 @@
 from store.store import channels
 from bs4 import BeautifulSoup
 import requests
-import schedule
-from threading import Thread
 # from checker.checker import checker, VALID_EVENT_THRESHOLD
 from sender.sender import send
 
@@ -35,8 +33,9 @@ def run():
             channels[index]['last_post'] = new_post_id
             title = soup.find('meta', property="og:title").attrs['content']
 
-            print(title, new_post_id)
             description = soup.find('meta', property="og:description").attrs['content']
-            # coef, name, date = checker(f"{title}\n{description}")
-            # if coef >= VALID_EVENT_THRESHOLD:
-            #     send(title, description, origin)
+            coef, name, date = 0.8, None, None #checker(f"{title}\n{description}")
+            print(coef, name, date)
+            if coef >= 0.6:  #VALID_EVENT_THRESHOLD:
+                send(name if name else title, description if description else '', origin)
+                exit()
