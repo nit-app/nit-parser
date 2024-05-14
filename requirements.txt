@@ -2,4 +2,7 @@ transformers==4.24.0
 simpletransformers==0.63.11
 scikit-learn>=1.2.2
 numpy>=1.24.1
-deeppavlov
+deeppavlov~=1.6.0
+
+requests~=2.31.0
+beautifulsoup4~=4.12.2

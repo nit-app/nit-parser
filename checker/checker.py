@@ -1,7 +1,9 @@
 from datetime import datetime
 from typing import List
-
+from queue import Queue
 from deeppavlov import build_model
+
+text_queue = Queue()
 
 VALID_EVENT_FEATURES = 10
 VALID_EVENT_THRESHOLD = 0.7

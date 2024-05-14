@@ -1,3 +1,3 @@
-from checker.checker import checker
+from parser.tg import run
 
-print(checker("""text"""))
+run()
