@@ -17,8 +17,22 @@ def send(title, description, origin, location):
         "hasCertificate": False,
         "tags": ["ИТ", "ИБ"]
     }
-    res = requests.post('https://nit-api.upfolio.ru/v1/eventAdmin/create', json.dumps(body), headers={
+    try:
+        res = requests.post('https://nit-api.upfolio.ru/v1/eventAdmin/create', json.dumps(body), headers=get_auth())
+        log_success(res)
+    except Exception as e:
+        log_error(e)
+
+
+def get_auth():
+    return {
         'cookie': 'isomiso='
-    })
+    }
+
+
+def log_success(res):
     print(res.status_code, res.json())
 
+
+def log_error(error: Exception):
+    print(error)
